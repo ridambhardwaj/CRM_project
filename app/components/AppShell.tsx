@@ -4,15 +4,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
-  Bell, CalendarDays, ChevronDown, LayoutDashboard, ListFilter,
-  Menu, Settings, Users, WalletCards, X, ChartNoAxesCombined, ListChecks,
+  CalendarDays, ChevronDown, LayoutDashboard,
+  Menu, Settings, Users, WalletCards, X, ChartNoAxesCombined, ListChecks, Mail,
 } from "lucide-react";
+import WorkNotificationCenter from "./WorkNotificationCenter";
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
   { name: "Leads", href: "/leads", icon: Users },
   { name: "Pipeline", href: "/pipeline", icon: WalletCards },
   { name: "Activities", href: "/activities", icon: ListChecks },
+  { name: "Tasks & calendar", href: "/tasks", icon: CalendarDays },
+  { name: "Campaigns", href: "/campaigns", icon: Mail },
   { name: "Team", href: "/team", icon: Users },
   { name: "Reports", href: "/reports", icon: ChartNoAxesCombined },
 ];
@@ -79,7 +82,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
           <div className="flex items-center gap-2 md:gap-3">
             <button className="hidden h-10 items-center gap-2 rounded-lg border border-[#e4e7ec] px-3 text-xs font-semibold text-[#596274] sm:flex"><CalendarDays size={16}/> Nov 1 – Nov 20</button>
-            <button className="relative grid h-10 w-10 place-items-center rounded-lg border border-[#e4e7ec] text-[#596274]" aria-label="Notifications"><Bell size={18}/><span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-[#ed6a5a]"/></button>
+            <WorkNotificationCenter />
             <button className="grid h-10 w-10 place-items-center rounded-full bg-[#f1e2d3] text-xs font-bold text-[#7b5540]">MR</button>
           </div>
         </header>
