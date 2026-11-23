@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, ChevronRight, Plus, TrendingUp, Users, WalletCards, Target, CalendarClock } from "lucide-react";
+import { ArrowUpRight, Plus, TrendingUp, Users, WalletCards, Target, Sparkles, Mail, LayoutTemplate } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const revenue = [
@@ -32,6 +32,36 @@ export default function Home() {
 					<Plus size={17} /> Add lead
 				</button>
 			</div>
+
+			<section className="mb-6 rounded-xl border border-[#e7e9ed] bg-white p-4">
+				<div className="mb-3 flex items-center justify-between">
+					<div className="flex items-center gap-2">
+						<span className="grid h-8 w-8 place-items-center rounded-lg bg-[#fff0ec] text-[#d75f52]"><Sparkles size={16} /></span>
+						<div>
+							<h3 className="text-sm font-bold text-[#17253a]">AI Email Composer</h3>
+							<p className="text-[11px] text-[#949baa]">Generate and send emails with one prompt</p>
+						</div>
+					</div>
+					<Link href="/simple-composer" className="inline-flex items-center gap-1 text-xs font-bold text-[#ed6a5a]">
+						Open composer <ArrowUpRight size={13} />
+					</Link>
+				</div>
+				<div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+					{[
+						{ label: "Generate email", icon: Sparkles, href: "/simple-composer" },
+						{ label: "Send email", icon: Mail, href: "/simple-composer" },
+						{ label: "View campaigns", icon: LayoutTemplate, href: "/campaigns" },
+					].map((action) => (
+						<Link
+							key={action.label}
+							href={action.href}
+							className="flex h-11 items-center justify-center gap-2 rounded-lg border border-[#e4e7ec] px-3 text-xs font-semibold text-[#455267] transition hover:border-[#ed6a5a] hover:text-[#b84f45]"
+						>
+							<action.icon size={15} /> {action.label}
+						</Link>
+					))}
+				</div>
+			</section>
 
 			<section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 				{[
